@@ -531,4 +531,4 @@ end)
 
 end
 
--- Acess: https://vgzinhostore.com/ | Acesse: https://vgzinhostore.com/
+-- Acesse: https://vgzinhostore.com/
