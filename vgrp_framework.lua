@@ -530,3 +530,5 @@ addEventHandler("onClientResourceStop", resourceRoot, function()
 end)
 
 end
+
+-- Acesse: https://vgzinhostore.com/
