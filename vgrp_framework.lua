@@ -10,7 +10,7 @@
 
 Caso tenha dúvidas consulte: 
 Discord: https://discord.gg/NjeRXA475g
-Documentação para este script: https://docs.vgzinhostore.com :) mrl
+Documentação para este script: https://docs.vgzinhostore.com :) mrl fofo
 ]]
 
 ------ VGroup Core System Export
