@@ -1,7 +1,6 @@
-# 🚀 VGRP Framework para MTAX
+# 🚀 VGroup Roleplay ~ Framework MTAX
 
 [![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge\&logo=discord\&logoColor=white)](https://discord.gg/NjeRXA475g)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge\&logo=github\&logoColor=white)](https://github.com/vgzinhodev/mta-to-mtax)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
 > **VGRP** é um framework desenvolvido para **MTAX**, criado para facilitar a migração de servidores e scripts do MTA:SA para uma estrutura moderna, organizada, segura e escalável.
@@ -41,7 +40,7 @@ O **VGRP** fornece uma camada de compatibilidade e gerenciamento para servidores
 ## 1. Clone o repositório
 
 ```bash
-git clone https://github.com/vgzinhodev/mta-to-mtax.git
+git clone https://github.com/vgzinhodev/vgrp.git
 ```
 
 ## 2. Instale os recursos
@@ -144,13 +143,13 @@ start vgrp
 
 ---
 
-# 🔄 Conversor MTA:SA → MTAX
+# [🔄 Conversor MTA:SA → MTAX](https://github.com/vgzinhodev/mta-to-mtax)
 
-O projeto também possui um **conversor automático** para auxiliar na migração de scripts do MTA:SA para o MTAX.
+O projeto também possui um [**conversor automático**](https://github.com/vgzinhodev/mta-to-mtax) para auxiliar na migração de scripts do MTA:SA para o MTAX.
 
 ### Como utilizar
 
-1. Acesse o conversor em `mta-to-mtax`
+1. Acesse o conversor em [`mta-to-mtax`](https://github.com/vgzinhodev/mta-to-mtax)
 2. Cole seu código MTA:SA
 3. Clique em **Converter**
 4. Copie o código convertido
@@ -311,7 +310,7 @@ Caso precise de ajuda, entre em contato através dos canais oficiais:
 * 💬 **Discord:** https://discord.gg/NjeRXA475g
 * 📚 **Documentação:** https://docs.vgzinhostore.com
 * 🌐 **Site:** https://vgzinhostore.com
-* 💻 **GitHub:** https://github.com/vgzinhodev/mta-to-mtax
+* 💻 **GitHub:** https://github.com/vgzinhodev/vgrp
 
 ---
 
@@ -326,11 +325,10 @@ Consulte o arquivo [`LICENSE`](LICENSE) para obter mais informações.
 # 🙏 Agradecimentos
 
 * ❤️ **Equipe MTAX** pela criação da plataforma
-* 🤝 **Comunidade VgZinhoOo Store** pelo suporte
-* 👨‍💻 Todos os desenvolvedores que contribuem com o projeto
+* 🤝 [**VgZinhoOo Store**](https://vgzinhostore.com/) pelo suporte
 
 ---
 
 <div align="center">
-### Desenvolvido com ❤️ por **VgZinhoOo Store**
+### [Desenvolvido com ❤️ por **VgZinhoOo Store**](https://vgzinhostore.com/)
 </div>
