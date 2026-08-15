@@ -325,10 +325,9 @@ Consulte o arquivo [`LICENSE`](LICENSE) para obter mais informações.
 # 🙏 Agradecimentos
 
 * ❤️ **Equipe MTAX** pela criação da plataforma
-* 🤝 [**VgZinhoOo Store**](https://vgzinhostore.com/) pelo suporte
 
 ---
 
 <div align="center">
-### [Desenvolvido com ❤️ por **VgZinhoOo Store**](https://vgzinhostore.com/)
+### Desenvolvido com ❤️ por **VgZinhoOo Store**
 </div>
