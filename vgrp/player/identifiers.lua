@@ -53,4 +53,5 @@ function getPlayerIdentifier(player)
     local identifiers = parseIdentifiers(player)
     return identifiers.serial, identifiers
 end
-createEventS("getPlayerIdentifier", getPlayerIdentifier)
+addEvent("getPlayerIdentifier", true)
+addEventHandler("getPlayerIdentifier", getRootElement(), getPlayerIdentifier)

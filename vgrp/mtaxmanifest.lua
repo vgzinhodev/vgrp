@@ -13,8 +13,6 @@ shared_files = {
 }
 
 server_files = {
-    "VgZinhoOoS.lua",
-
     "groups/permissions.lua",
 
     "player/identifiers.lua",
@@ -30,7 +28,6 @@ server_files = {
 }
 
 client_files = {
-    "VgZinhoOoC.lua",
     "groups/permissionsc.lua",
     "legacy/addCommandHandler.lua",
     "legacy/bindKey.lua",
