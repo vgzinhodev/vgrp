@@ -329,5 +329,5 @@ Consulte o arquivo [`LICENSE`](LICENSE) para obter mais informações.
 ---
 
 <div align="center">
-### Desenvolvido com ❤️ por **VgZinhoOo Store**
+Desenvolvido com ❤️ por VgZinhoOo Store
 </div>
