@@ -10,7 +10,7 @@
 
 Caso tenha dúvidas consulte: 
 Discord: https://discord.gg/NjeRXA475g
-Documentação para este script: https://docs.vgzinhostore.com 2345678
+Documentação para este script: https://docs.vgzinhostore.com 2345678 salve salve teste
 ]]
 
 ------ VGroup Core System Export
