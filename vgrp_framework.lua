@@ -123,6 +123,30 @@ function unbindKey(_, bind, state, func, ...)
 end
 
 ----------------------------------------------------------------------------------------------------------------
+-- Chat / Input Server-Side Compatibility 
+----------------------------------------------------------------------------------------------------------------
+
+function isChatBoxInputActive(...)
+    return false
+end
+
+function getKeyState(key, ...)
+    return false
+end
+
+----------------------------------------------------------------------------------------------------------------
+-- outputChatBox Compatibility
+----------------------------------------------------------------------------------------------------------------
+
+function outputChatBox(player, text, ...)
+    if localPlayer then
+        return vgrp:notify(player, "info")
+    end
+
+    return vgrp:notify(player, text, "info")
+end
+
+----------------------------------------------------------------------------------------------------------------
 -- String Compatibility
 ----------------------------------------------------------------------------------------------------------------
 string.gfind = string.gmatch
@@ -185,11 +209,99 @@ function isGuestAccount(player)
 end
 
 ----------------------------------------------------------------------------------------------------------------
+-- Account Data Compatibility (setAccountData / getAccountData)
+----------------------------------------------------------------------------------------------------------------
+-- Como o vgrp não usa contas nativas da MTA, "account" aqui é sempre o
+-- player element (ou diretamente o Vg:ID). Os dados são persistidos através
+-- da tabela vgrp_user_data (vgrp:setUserData / vgrp:getUserData).
+if not localPlayer then
+
+local function resolveAccountId(account)
+    if type(account) == "userdata" then
+        local id = getElementData(account, "Vg:ID")
+        if id then return tonumber(id) end
+        return nil
+    end
+    return tonumber(account)
+end
+
+function setAccountData(account, key, value, ...)
+    local id = resolveAccountId(account)
+    if not id or not key then return false end
+    return vgrp:setUserData(id, key, value)
+end
+
+function getAccountData(account, key)
+    local id = resolveAccountId(account)
+    if not id or not key then return nil end
+    return vgrp:getUserData(id, key)
+end
+
+----------------------------------------------------------------------------------------------------------------
+-- ACL Group Object Compatibility (aclGroupRemoveObject / aclGroupAddObject)
+----------------------------------------------------------------------------------------------------------------
+function resolveObjectId(theObjectString)
+    if type(theObjectString) == "string" then
+        local idFromString = theObjectString:match("^user%.(.+)$")
+        return idFromString or theObjectString
+    end
+
+    if type(theObjectString) == "userdata" then
+        return getElementData(theObjectString, "Vg:ID")
+    end
+
+    return nil
+end
+
+function aclGroupRemoveObject(theGroup, theObjectString)
+    local groupName = tostring(theGroup)
+    local targetId = resolveObjectId(theObjectString)
+    if not targetId then return false end
+
+    return vgrp:removePlayerGroup(targetId, groupName)
+end
+
+function aclGroupAddObject(theGroup, theObjectString)
+    local groupName = tostring(theGroup)
+    local targetId = resolveObjectId(theObjectString)
+    if not targetId then return false end
+
+    return vgrp:addPlayerGroup(targetId, groupName)
+end
+
+end
+
+----------------------------------------------------------------------------------------------------------------
 -- Serial Compatibility 
 ----------------------------------------------------------------------------------------------------------------
 
 function getPlayerSerial(player)
     return vgrp:getPlayerIdentifier(player)
+end
+
+----------------------------------------------------------------------------------------------------------------
+-- Player Money Compatibility
+----------------------------------------------------------------------------------------------------------------
+
+
+if not localPlayer then
+
+function givePlayerMoney(player, amount)
+    return vgrp:givePlayerMoney(player, amount)
+end
+
+function takePlayerMoney(player, amount)
+    return vgrp:takePlayerMoney(player, amount)
+end
+
+function getPlayerMoney(player, ...)
+    return vgrp:getPlayerMoney(player)
+end
+
+function setPlayerMoney(player, amount, instant)
+    return vgrp:setPlayerMoney(player, amount, instant)
+end
+
 end
 
 ----------------------------------------------------------------------------------------------------------------
