@@ -154,8 +154,8 @@ end)
 
 addEventHandler("onPlayerQuit", root, function()
     local id = getElementData(source, "Vg:ID")
-    if savePlayerData then savePlayerData(source) end -- grava posição/skin/etc no CacheData
-    if id then savePlayerCache(id, true) end            -- só ENTÃO persiste no banco e limpa
+    if savePlayerData then savePlayerData(source) end
+    if id then savePlayerCache(id, true) end
     PlayerIdentifiers[source] = nil
 end)
 
@@ -169,10 +169,8 @@ local saveTimer = setTimer(function()
     for _, player in ipairs(getElementsByType("player")) do
         savePlayerData(player)
     end
-end, 10000, 0) -- 5 minutos
-
+end, 10000, 0)
 
 function getSaveKeys()
     return SaveKeys
 end
-
