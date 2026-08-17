@@ -327,14 +327,6 @@ addEventHandler("onPlayerConnect", root, function(apelido, ip, senha, identifier
     end
 end)
 
-addEventHandler("onPlayerJoin", root, function()
-    local player = source
-    setTimer(function(ply)
-        PlayerIdentifiers[ply] = parseIdentifiers(ply)
-        handleAccount(ply)
-    end, 3000, 1, source)
-end)
-
 addEventHandler("onPlayerQuit", root, function()
     if savePlayerData then
         savePlayerData(source)
@@ -342,8 +334,8 @@ addEventHandler("onPlayerQuit", root, function()
     PlayerIdentifiers[source] = nil
 end)
 
-addEvent("vgrp:forceLogin", true)
-addEventHandler("vgrp:forceLogin", root, function()
+addEvent("vgrp:PlayerJoin", true)
+addEventHandler("vgrp:PlayerJoin", root, function()
     local player = source
     PlayerIdentifiers[player] = parseIdentifiers(player)
     handleAccount(player)

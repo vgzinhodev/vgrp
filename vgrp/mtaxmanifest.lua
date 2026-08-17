@@ -29,9 +29,11 @@ server_files = {
 
 client_files = {
     "groups/permissionsc.lua",
+
     "legacy/addCommandHandler.lua",
     "legacy/bindKey.lua",
 
+    "player/joinc.lua",
 }
 
 

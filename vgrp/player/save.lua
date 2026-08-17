@@ -156,7 +156,6 @@ addEventHandler("onPlayerQuit", root, function()
     local id = getElementData(source, "Vg:ID")
     if savePlayerData then savePlayerData(source) end
     if id then savePlayerCache(id, true) end
-    PlayerIdentifiers[source] = nil
 end)
 
 addEventHandler("onResourceStop", resourceRoot, function()
