@@ -21,6 +21,7 @@ server_files = {
 
     "player/datas.lua",
     "player/save.lua",
+    "player/money.lua",
 
     "legacy/addCommandHandlerServer.lua",
     "legacy/bindKeyServer.lua",
@@ -45,5 +46,15 @@ exports = {
     "removePlayerGroup",
     "getPlayerGroups",
     "isBindEventAvaliable",
-    "getPlayerIdentifier"
+    "getPlayerIdentifier",
+
+    "getUserData",
+    "setUserData",
+ 
+    "getPlayerMoney",
+    "setPlayerMoney",
+    "givePlayerMoney",
+    "takePlayerMoney", 
+
+    "notify",
 }
