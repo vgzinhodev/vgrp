@@ -94,24 +94,28 @@ function loadPlayerData(player)
         setElementModel(player, 0) -- CJ default
     end
     
-    local spawnX, spawnY, spawnZ = 0, 0, 3
+    local spawnX, spawnY, spawnZ = 1481.57, -1739.08, 13.54
     local spawnInterior = 0
     local spawnDimension = 0
     
     if posg then
-        posg = fromJSON(posg)
-        spawnX = tonumber(posg[1])
-        spawnY = tonumber(posg[2])
-        spawnZ = tonumber(posg[3])
-        spawnInterior = tonumber(interior) or 0
-        spawnDimension = tonumber(dimension) or 0
+        local ok, parsed = pcall(fromJSON, posg)
+        if ok and type(parsed) == "table" and parsed[1] and parsed[2] and parsed[3] then
+            spawnX = tonumber(parsed[1])
+            spawnY = tonumber(parsed[2])
+            spawnZ = tonumber(parsed[3])
+            spawnInterior = tonumber(interior) or 0
+            spawnDimension = tonumber(dimension) or 0
+        else
+            outputDebugString("[SAVE] POS_G inválido para id " .. tostring(id) .. ": " .. tostring(posg), 2)
+        end
     end
+    setCameraTarget(player, player)
 
     spawnPlayer(player, spawnX, spawnY, spawnZ)
-    
+    setElementPosition(player, spawnX, spawnY, spawnZ)
     setElementInterior(player, spawnInterior)
     setElementDimension(player, spawnDimension)
-    setCameraTarget(player, player)
     setPedStat(player, 22, 1000)
     fadeCamera( player, true, 0.5 )
     local healthValue = tonumber(health) or 100
@@ -149,7 +153,10 @@ addEventHandler("vgrp:Login2", root, function()
 end)
 
 addEventHandler("onPlayerQuit", root, function()
-    savePlayerData(source)
+    local id = getElementData(source, "Vg:ID")
+    if savePlayerData then savePlayerData(source) end -- grava posição/skin/etc no CacheData
+    if id then savePlayerCache(id, true) end            -- só ENTÃO persiste no banco e limpa
+    PlayerIdentifiers[source] = nil
 end)
 
 addEventHandler("onResourceStop", resourceRoot, function()

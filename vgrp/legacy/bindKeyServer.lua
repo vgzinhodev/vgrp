@@ -15,7 +15,6 @@ Documentação para este script: https://docs.vgzinhostore.com
 local pendingBinds = {}
 
 function registerPendingBind(eventName, bind, state, ...)
-    iprint("[VGRP] - A new Bind is pending", eventName)
     pendingBinds[eventName] = {bind, state, ...} 
 end
 addEvent("vgrp:registerPendingBind", true)
@@ -24,7 +23,6 @@ addEventHandler("vgrp:registerPendingBind", getRootElement(), registerPendingBin
 function releasePendingBind(player)
     player = player or source
     for i, v in pairs(pendingBinds) do 
-        iprint("[VGRP] Register Bind ", i, "for player", player)
         triggerClientEvent(player, "vgrp:addClientBind", player, i, v[1], v[2], v[3], v[4])
     end
 end
@@ -32,7 +30,6 @@ addEvent("vgrp:releasePendingBind", true)
 addEventHandler("vgrp:releasePendingBind", getRootElement(), releasePendingBind)
 
 function unregisterPendingBind(eventName)
-    iprint("[VGRP] - A pending bind was removed", eventName)
     pendingBinds[eventName] = nil 
 end
 addEvent("vgrp:unregisterPendingBind", true)

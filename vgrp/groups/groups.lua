@@ -19,7 +19,7 @@ Groups = {
     -- ================================================
     ["Staff"] = {
         ["Nome"] = "Staff",
-        ["permissions"] = {"staff.permissao", "nc.permissao", "god.permissao", "tpto.permissao", "car.permissao", "tptome.permissao"}
+        ["permissions"] = {"staff.permissao", "nc.permissao", "god.permissao", "tpto.permissao", "car.permissao", "tptome.permissao", "car.permissao", "carcolor.permissao", "dv.permissao", "fix.permissao", "god.permissao", "gp.permissao", "nc.permissao", "sp.permissao", "time.permissao", "tpto.permissao", "tptome.permissao"}
     },
     ["CEO"] = {
         ["Nome"] = "CEO",

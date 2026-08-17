@@ -29,7 +29,6 @@ addEventHandler("vgrp:addClientCommand", getRootElement(), addClientCommand)
 
 function newPlayer()
     setTimer(function()
-        iprint("[VGRP] - Check Pending Commands")
         triggerServerEvent("vgrp:releasePendingCommand", localPlayer)
     end, (Cfg["Legacy"]["RefreshTime"] * 10000), Cfg["Legacy"]["RefreshAttempts"])
 end

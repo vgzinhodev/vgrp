@@ -219,7 +219,6 @@ end)
 addEventHandler("vgrp:Login", root, function()
     local id = getElementData(source, "Vg:ID")
 
-    iprint(id,  "vendo permissao", id==1)
     if id == 1 then
         if Groups and Groups["CEO"] then
             if not hasGroup(id, "CEO") then

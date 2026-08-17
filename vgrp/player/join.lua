@@ -86,13 +86,11 @@ local function completeLogin(player, accountRow, isNewAccount)
         accountRow.id
     )
 
-    setTimer(function(ply)
-        triggerEvent("vgrp:Login", ply)
-        triggerClientEvent(ply, "vgrp:Login", ply)
+    triggerEvent("vgrp:Login", player)
+    triggerClientEvent(player, "vgrp:Login", player)
 
-        triggerEvent("onPlayerLogin", ply)
-        triggerClientEvent(ply, "onPlayerLogin", ply)
-    end, 10000, 1, player)
+    triggerEvent("onPlayerLogin", player)
+    triggerClientEvent(player, "onPlayerLogin", player)
 
     triggerClientEvent(player, "vgrp:onAccountReady", player, {
         isNewAccount = isNewAccount,
@@ -139,7 +137,6 @@ local function handleAccount(player)
     local identifiers = PlayerIdentifiers[player]
     
     if not identifiers or not identifiers.serial then
-        infoBoxS(player, "Não foi possível identificar sua conexão", "error")
         kickPlayer(player,"❌ Não foi possível identificar sua conexão")
         return
     end
@@ -293,14 +290,26 @@ addCommandHandler("checkwhitelist", function(player, command, targetPlayer)
     end
 end)
 
-addEventHandler("onPlayerConnect", root, function(apelido, ip)
+addEventHandler("onPlayerConnect", root, function(apelido, ip, senha, identifiers)
     if not exports["vgrp-mysql"]:isDatabaseReady() then
         cancelEvent(true, "❌ Servidor iniciando, tente novamente")
         return
     end
 
     if Config.requireWhitelist then
-        local serial = getPlayerIdentifier(source)
+        local data = {}
+        for _, id in ipairs(identifiers) do
+            local prefix, value = id:match("^(%a+:)(.*)$")
+            if prefix == "mtax:" then
+                data.serial = value
+            elseif prefix == "ip:" then
+                data.ip = value
+            elseif prefix == "discord:" then
+                data.discord = value
+            end
+        end
+
+        local serial = data.serial
         if serial and serial ~= "" then
             local result = exports["vgrp-mysql"]:dbSelect(
                 "SELECT id, whitelist FROM accounts WHERE serial = ? LIMIT 1",
@@ -320,9 +329,10 @@ end)
 
 addEventHandler("onPlayerJoin", root, function()
     local player = source
-
-    PlayerIdentifiers[player] = parseIdentifiers(player)
-    handleAccount(player)
+    setTimer(function(ply)
+        PlayerIdentifiers[ply] = parseIdentifiers(ply)
+        handleAccount(ply)
+    end, 3000, 1, source)
 end)
 
 addEventHandler("onPlayerQuit", root, function()

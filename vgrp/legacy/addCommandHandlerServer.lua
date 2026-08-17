@@ -15,7 +15,6 @@ Documentação para este script: https://docs.vgzinhostore.com
 local pendingCommands = {}
 
 function registerPendingCommand(cmd)
-    iprint("[VGRP] - A new command is pending", cmd)
     pendingCommands[cmd] = true 
 end
 addEvent("vgrp:registerPendingCommand", true)
@@ -24,7 +23,6 @@ addEventHandler("vgrp:registerPendingCommand", getRootElement(), registerPending
 function releasePendingCommand(player)
     player = player or source
     for i, v in pairs(pendingCommands) do 
-        iprint("[VGRP] Register Command ", i, "for Player", player)
         triggerClientEvent(player, "vgrp:addClientCommand", player, i)
     end
 end
@@ -32,7 +30,6 @@ addEvent("vgrp:releasePendingCommand", true)
 addEventHandler("vgrp:releasePendingCommand", getRootElement(), releasePendingCommand)
 
 function unregisterPendingCommand(cmd)
-    iprint("[VGRP] - A pending command was removed", cmd)
     pendingCommands[cmd] = nil 
 end
 addEvent("vgrp:unregisterPendingCommand", true)

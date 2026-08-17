@@ -42,7 +42,6 @@ addEventHandler("vgrp:removeClientBind", getRootElement(), removeClientBind)
 
 function newPlayer()
     setTimer(function()
-        iprint("[VGRP] - Check Pending Binds")
         triggerServerEvent("vgrp:releasePendingBind", localPlayer)
     end, (Cfg["Legacy"]["RefreshTime"] * 10000), Cfg["Legacy"]["RefreshAttempts"])
 end
